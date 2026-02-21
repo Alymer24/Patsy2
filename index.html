@@ -56,11 +56,35 @@
             display: flex; align-items: center; justify-content: center;
             position: relative;
         }
-        .parallax::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); }
+        
+        /* Dark overlay removed here */
+        .parallax::after { content: none; } 
+
         .parallax-content { position: relative; z-index: 10; color: white; text-align: center; width: 100%; padding: 0 5%; }
         
-        .hero-title { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 900; line-height: 1; letter-spacing: -2px; margin-bottom: 20px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .hero-sub { font-size: clamp(0.8rem, 3vw, 1.2rem); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; border: 2px solid var(--secondary); display: inline-block; padding: 10px 20px; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); }
+        .hero-title { 
+            font-size: clamp(2.5rem, 8vw, 5.5rem); 
+            font-weight: 900; 
+            line-height: 1; 
+            letter-spacing: -2px; 
+            margin-bottom: 20px; 
+            color: #FFFFFF; /* Beyond Survival stays white */
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6); /* Shadow for legibility without overlay */
+        }
+
+        /* Updated "Total Transformation" styling */
+        .hero-sub { 
+            font-size: clamp(0.8rem, 3vw, 1.2rem); 
+            font-weight: 700; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            border: 2px solid var(--secondary); 
+            display: inline-block; 
+            padding: 10px 20px; 
+            background: transparent; /* Changed to transparent */
+            color: #FFFFFF;           /* Changed to white */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6); /* Added shadow for readability */
+        }
 
         /* General Section Layout */
         .section { padding: 80px 8%; }
@@ -101,7 +125,7 @@
         .phase-label { background: var(--primary); color: white; text-align: center; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
         .phase-label h4 { font-size: 2rem; font-weight: 900; }
 
-        /* Budget Table Container for Horizontal Scroll on Mobile */
+        /* Budget Table Container */
         .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 30px; }
         .budget-table { width: 100%; border-collapse: collapse; min-width: 600px; }
         .budget-table th { background: var(--primary); color: white; padding: 20px; text-align: left; font-size: 0.8rem; letter-spacing: 1px; }
@@ -120,15 +144,11 @@
         @media (max-width: 768px) {
             nav { padding: 1rem 3%; flex-direction: column; gap: 15px; text-align: center; }
             .nav-links { gap: 15px; }
-            
             .section { padding: 60px 5%; }
             .about-visual-grid { grid-template-columns: 1fr; }
-            .img-container { order: -1; } /* Image moves above text on mobile */
-            
+            .img-container { order: -1; }
             .roadmap-phase { grid-template-columns: 1fr; text-align: center; }
-            .phase-label { clip-path: none; padding: 15px; }
-
-            .parallax { background-attachment: scroll; } /* Parallax is disabled on mobile for better performance */
+            .parallax { background-attachment: scroll; } 
         }
 
         @media (max-width: 480px) {
@@ -177,7 +197,7 @@
                         <p style="font-size: 0.75rem;">Trauma-informed support.</p>
                     </div>
                     <div class="crisis-item">
-                        <h4 data-en="ECONOMY" data-es="ECONOMÍA">ECONOMY</h4>
+                        <h4 data-en="ECONOMY" data-es="ECONOMÍA">ECONOMÍA</h4>
                         <p style="font-size: 0.75rem;">Career & Financial freedom.</p>
                     </div>
                 </div>
