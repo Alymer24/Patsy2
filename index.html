@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation Beacon of Light and Resilience</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #123c3d;     /* Midnight Emerald */
+            --secondary: #f39c12;   /* Radiant Amber */
+            --accent: #c0392b;      /* Crimson Safety */
+            --bg-light: #fdfbf7;    /* Soft Linen */
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --shadow: 0 15px 35px rgba(18, 60, 61, 0.12);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
+        body { color: var(--text-dark); background: var(--bg-light); scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* Navigation */
+        nav {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 3px solid var(--secondary);
+            padding: 1.2rem 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 2000;
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+        .lang-switch { background: var(--primary); color: white; border: 1px solid var(--secondary); padding: 8px 20px; border-radius: 0px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .lang-switch:hover { background: var(--secondary); color: var(--primary); }
+
+        /* Hero / Parallax Header */
+        .parallax {
+            height: 85vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .parallax::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 60, 61, 0.65); }
+        .parallax-content { position: relative; z-index: 10; color: white; text-align: center; padding: 0 10%; width: 100%; }
+        
+        /* Hero Refinement Styles */
+        .hero-title { 
+            color: #ffffff; 
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            line-height: 1; 
+            margin-bottom: 20px; 
+            letter-spacing: -2px; 
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4); 
+        }
+        .hero-sub { 
+            color: #ffffff; 
+            font-size: 1.4rem; 
+            font-weight: 400; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            background: rgba(18, 60, 61, 0.4); 
+            display: inline-block; 
+            padding: 12px 30px; 
+            border-left: 5px solid var(--secondary); 
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Global Sections */
+        .section { padding: 120px 10%; }
+        .section-header { text-align: center; max-width: 900px; margin: 0 auto 70px; }
+        .section-title { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; font-weight: 900; letter-spacing: -1.5px; text-transform: uppercase; }
+        .section-title span { color: var(--secondary); border-bottom: 8px solid rgba(243, 156, 18, 0.2); }
+
+        /* Strategic About Grid */
+        .about-visual-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 100px; align-items: center; }
+        .transformation-statement { font-size: 1.5rem; color: var(--primary); font-weight: 800; margin-bottom: 25px; line-height: 1.3; }
+        .dual-crisis-box { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 50px; }
+        .crisis-item { background: var(--white); padding: 30px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        .crisis-item h4 { color: var(--primary); font-size: 1rem; text-transform: uppercase; margin-bottom: 10px; font-weight: 900; }
+        .about-image-stack { position: relative; }
+        .main-img { width: 100%; box-shadow: 25px 25px 0px var(--secondary); display: block; }
+        .overlay-badge { position: absolute; bottom: -30px; left: -30px; background: var(--primary); color: var(--white); padding: 35px; max-width: 280px; border: 2px solid var(--secondary); }
+
+        /* Service Grid */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .service-card { background: var(--white); padding: 50px; border-top: 10px solid var(--primary); transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow); }
+        .service-card:hover { transform: translateY(-15px); border-top-color: var(--secondary); }
+        .service-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 25px; }
+        .service-card h3 { color: var(--primary); font-weight: 800; margin-bottom: 20px; text-transform: uppercase; font-size: 1.3rem; }
+        .metric-tag { background: var(--primary); color: var(--white); padding: 8px 15px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; margin-top: 30px; border-left: 4px solid var(--secondary); }
+
+        /* Roadmap Section */
+        .roadmap-phase { display: grid; grid-template-columns: 200px 1fr; gap: 40px; background: var(--white); padding: 40px; margin-bottom: 30px; box-shadow: var(--shadow); border-left: 10px solid var(--primary); }
+        .phase-label { background: linear-gradient(135deg, var(--primary), #1e5a5c); color: white; text-align: center; padding: 25px; display: flex; flex-direction: column; justify-content: center; }
+        .phase-label h4 { font-size: 2.2rem; font-weight: 900; }
+        .phase-details li { margin-bottom: 12px; font-weight: 500; list-style: none; }
+        .phase-details li::before { content: '✓ '; color: var(--secondary); font-weight: bold; }
+
+        /* Impact Table */
+        .budget-table { width: 100%; border-collapse: collapse; margin-top: 60px; background: white; box-shadow: var(--shadow); }
+        .budget-table th { background: var(--primary); color: white; padding: 25px; text-align: left; text-transform: uppercase; letter-spacing: 1px; }
+        .budget-table td { padding: 20px 25px; border-bottom: 1px solid #eee; font-weight: 600; }
+        .total-row { background: var(--primary); color: var(--secondary); font-size: 1.2rem; font-weight: 900; }
+
+        /* Quick Exit Safety Button */
+        #quick-exit { position: fixed; bottom: 40px; right: 40px; background: var(--accent); color: white; width: 90px; height: 90px; border-radius: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; cursor: pointer; border: 4px solid var(--white); font-weight: 900; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: 0.3s; }
+        #quick-exit:hover { transform: scale(1.1); background: #000; }
+
+        @media (max-width: 992px) { 
+            .about-visual-grid, .roadmap-phase { grid-template-columns: 1fr; } 
+            .hero-title { font-size: 3rem; }
+            .hero-sub { font-size: 1rem; letter-spacing: 1px; }
+            .section { padding: 80px 5%; }
+            .main-img { box-shadow: none; }
+            .overlay-badge { position: relative; bottom: 0; left: 0; margin-top: 20px; max-width: 100%; } 
+        }
+    </style>
+</head>
+<body>
+
+    <button id="quick-exit" onclick="window.location.href='https://weather.com'">
+        <i class="fas fa-running" style="font-size: 1.2rem; margin-bottom: 5px;"></i>
+        <span data-en="EXIT SITE" data-es="SALIR">EXIT SITE</span>
+    </button>
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-lighthouse"></i> Beacon of Light
+        </div>
+        <div class="nav-links">
+            <a href="#about" data-en="Strategy" data-es="Estrategia">Strategy</a>
+            <a href="#services" data-en="Pillars" data-es="Pilares">Pillars</a>
+            <a href="#impact" data-en="Impact" data-es="Impacto">Impact</a>
+            <button class="lang-switch" onclick="toggleLanguage()">ESPAÑOL</button>
+        </div>
+    </nav>
+
+    <header class="parallax" style="background-image: url('Patsy_Portrait.jpg');">
+        <div class="parallax-content">
+            <h1 class="hero-title" data-en="BEYOND SURVIVAL" data-es="MÁS QUE SOBREVIVIR">BEYOND SURVIVAL</h1>
+            <p class="hero-sub" data-en="A Total Transformation for Domestic Violence Survivors" data-es="Una transformación total para sobrevivientes de violencia doméstica">
+                A Total Transformation for Domestic Violence Survivors
+            </p>
+        </div>
+    </header>
+
+    <section class="section" id="about">
+        <div class="about-visual-grid">
+            <div class="about-content-box">
+                <h2 class="section-title" data-en="MORE THAN A <span>SHELTER</span>" data-es="MÁS QUE UN <span>REFUGIO</span>">
+                    MORE THAN A <span>SHELTER</span>
+                </h2>
+                <p class="transformation-statement" data-en="We address the duality of the crisis: Safety and Independence." data-es="Abordamos la dualidad de la crisis: Seguridad e Independencia.">
+                    We address the duality of the crisis: Safety and Independence.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #444;" data-en="Our mission is to be a bilingual sanctuary that addresses the root of generational trauma. We recognize that domestic violence is an economic emergency as much as a safety one." data-es="Nuestra misión es ser un santuario bilingüe que aborde la raíz del trauma generacional.">
+                    Our mission is to be a bilingual sanctuary that addresses the root of generational trauma. We recognize that domestic violence is an economic emergency as much as a safety one.
+                </p>
+
+                <div class="dual-crisis-box">
+                    <div class="crisis-item">
+                        <h4 data-en="IDENTITY" data-es="IDENTIDAD">IDENTITY</h4>
+                        <p style="font-size: 0.9rem;" data-en="Trauma-informed therapy to rebuild dignity and self-worth." data-es="Terapia informada en el trauma para reconstruir la dignidad.">Trauma-informed therapy to rebuild dignity and self-worth.</p>
+                    </div>
+                    <div class="crisis-item">
+                        <h4 data-en="ECONOMY" data-es="ECONOMÍA">ECONOMY</h4>
+                        <p style="font-size: 0.9rem;" data-en="Job placement and literacy to break the cycle of dependency." data-es="Colocación laboral para romper el ciclo de dependencia.">Job placement and literacy to break the cycle of dependency.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image-stack">
+                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80&w=1000" class="main-img" alt="Solidarity and Support">
+                <div class="overlay-badge">
+                    <h5 style="font-size: 2.5rem; font-weight: 900; color: var(--secondary);">100%</h5>
+                    <p style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px;" data-en="Bilingual Advocacy" data-es="Defensa Bilingüe">Bilingual Advocacy</p>
+                    <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;" data-en="English and Spanish support for all programs." data-es="Soporte en inglés y español para todos los programas.">English and Spanish support for all programs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2000'); height: 45vh;">
+        <div class="parallax-content">
+            <h2 style="font-size: 3rem; font-weight: 900;" data-en="REBUILDING THE FOUNDATION" data-es="RECONSTRUYENDO LOS CIMIENTOS">REBUILDING THE FOUNDATION</h2>
+        </div>
+    </div>
+
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2 class="section-title" data-en="THE 10 PILLARS OF <span>IMPACT</span>" data-es="LOS 10 PILARES DE <span>IMPACTO</span>">THE 10 PILLARS OF <span>IMPACT</span></h2>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <div>
+                    <i class="fas fa-key"></i>
+                    <h3 data-en="Safe Housing" data-es="Vivienda Segura">Safe Housing</h3>
+                    <p data-en="Confidential, furnished 10-home acquisition model providing absolute security for families." data-es="Modelo de adquisición de 10 viviendas amuebladas que brindan seguridad absoluta.">Confidential, furnished 10-home acquisition model providing absolute security for families.</p>
+                </div>
+                <div class="metric-tag" data-en="50 Families Annually" data-es="50 Familias Anuales">50 Families Annually</div>
+            </div>
+            <div class="service-card">
+                <div>
+                    <i class="fas fa-brain"></i>
+                    <h3 data-en="Therapeutic Support" data-es="Soporte Terapéutico">Therapeutic Support</h3>
+                    <p data-en="On-site clinical sessions focusing on PTSD, depression, and child developmental healing." data-es="Sesiones clínicas enfocadas en el trastorno de estrés postraumático y sanación infantil.">On-site clinical sessions focusing on PTSD, depression, and child developmental healing.</p>
+                </div>
+                <div class="metric-tag" data-en="Bilingual Licensed Staff" data-es="Personal Licenciado">Bilingual Licensed Staff</div>
+            </div>
+            <div class="service-card">
+                <div>
+                    <i class="fas fa-briefcase"></i>
+                    <h3 data-en="Career Placement" data-es="Colocación Laboral">Career Placement</h3>
+                    <p data-en="Vocational training and job placement partnerships to ensure long-term financial freedom." data-es="Alianzas de capacitación vocacional para asegurar libertad financiera.">Vocational training and job placement partnerships to ensure long-term financial freedom.</p>
+                </div>
+                <div class="metric-tag" data-en="75% Success Target" data-es="75% Meta de Éxito">75% Success Target</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="impact" style="background: #fff;">
+        <div class="section-header">
+            <h2 class="section-title" data-en="THE 5-YEAR <span>ROADMAP</span>" data-es="EL PLAN DE <span>5 AÑOS</span>">THE 5-YEAR <span>ROADMAP</span></h2>
+        </div>
+        
+        <div class="roadmap-phase">
+            <div class="phase-label"><span>AÑOS</span><h4>1-2</h4></div>
+            <div class="phase-details">
+                <h3 data-en="Phase I: Foundation" data-es="Fase I: Fundación">Phase I: Foundation</h3>
+                <ul>
+                    <li data-en="Acquire first 4 properties" data-es="Adquirir las primeras 4 propiedades">Acquire first 4 properties</li>
+                    <li data-en="Launch bilingual legal clinics" data-es="Lanzar clínicas legales bilingües">Launch bilingual legal clinics</li>
+                    <li data-en="Teen violence prevention launch" data-es="Lanzamiento de prevención juvenil">Teen violence prevention launch</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="roadmap-phase">
+            <div class="phase-label"><span>AÑOS</span><h4>3-5</h4></div>
+            <div class="phase-details">
+                <h3 data-en="Phase II: Scaling" data-es="Fase II: Expansión">Phase II: Scaling</h3>
+                <ul>
+                    <li data-en="Complete 10-home vision" data-es="Completar la visión de 10 hogares">Complete 10-home vision</li>
+                    <li data-en="Integrated on-site daycare" data-es="Guardería integrada en el sitio">Integrated on-site daycare</li>
+                    <li data-en="Long-term sustainability model" data-es="Modelo de sostenibilidad a largo plazo">Long-term sustainability model</li>
+                </ul>
+            </div>
+        </div>
+
+        <table class="budget-table">
+            <thead>
+                <tr>
+                    <th data-en="SERVICE CATEGORY" data-es="CATEGORÍA">SERVICE CATEGORY</th>
+                    <th data-en="5-YEAR TOTAL" data-es="TOTAL 5 AÑOS">5-YEAR TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Housing & Capital Acquisition</td><td>$5,400,000</td></tr>
+                <tr><td>Childcare & Youth Programs</td><td>$1,500,000</td></tr>
+                <tr><td>Legal & Counseling Services</td><td>$442,000</td></tr>
+                <tr class="total-row">
+                    <td data-en="TOTAL INVESTMENT REQUEST" data-es="SOLICITUD DE INVERSIÓN TOTAL">TOTAL INVESTMENT REQUEST</td>
+                    <td>$7,342,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer style="padding: 80px 10%; background: var(--primary); color: white; text-align: center;">
+        <div style="margin-bottom: 30px;">
+            <a href="#" style="color: var(--secondary); margin: 0 20px; font-size: 2rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: var(--secondary); margin: 0 20px; font-size: 2rem;"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p style="font-weight: 800; letter-spacing: 2px;">BEACON OF LIGHT AND RESILIENCE</p>
+        <p style="font-size: 0.9rem; color: #8eb3b4; margin-top: 15px;">contact@beaconoflight.org | Sanando Vidas</p>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            document.querySelector('.lang-switch').innerText = currentLang === 'en' ? 'ESPAÑOL' : 'ENGLISH';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if(el.innerHTML.includes('<span')) {
+                    el.innerHTML = text;
+                } else {
+                    el.innerText = text;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
