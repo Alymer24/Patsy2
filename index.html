@@ -8,16 +8,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #008080;
-            --secondary: #FFB300;
-            --accent: #D32F2F;
-            --bg-light: #FFFFFF;
+            --primary: #008080;     /* Electric Teal */
+            --secondary: #FFB300;   /* Vivid Amber */
+            --accent: #D32F2F;      /* Sharp Red */
+            --bg-light: #FFFFFF;    /* Arctic White */
             --text-dark: #1A1A1A;
+            --card-shadow: 0 20px 40px rgba(0, 128, 128, 0.1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
         body { color: var(--text-dark); background: var(--bg-light); scroll-behavior: smooth; overflow-x: hidden; }
 
+        /* Navigation */
         nav {
             background: rgba(255, 255, 255, 0.98);
             padding: 1rem 5%;
@@ -28,109 +30,155 @@
 
         .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .beacon-icon {
-            width: 35px; height: 35px; background: var(--primary);
+            width: 30px; height: 30px; background: var(--primary);
             display: flex; align-items: center; justify-content: center;
             clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
             position: relative;
         }
         .beacon-icon::before {
-            content: ''; position: absolute; top: 15%; width: 8px; height: 8px;
+            content: ''; position: absolute; top: 15%; width: 6px; height: 6px;
             background: var(--secondary); border-radius: 50%;
             box-shadow: 0 0 10px var(--secondary);
         }
-        .logo-main { font-weight: 900; font-size: 1.1rem; color: var(--primary); letter-spacing: 1px; }
+        .logo-main { font-weight: 900; font-size: 1rem; color: var(--primary); letter-spacing: 1px; }
 
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; }
-        .lang-switch { background: var(--primary); color: white; border: none; padding: 8px 15px; font-weight: 900; cursor: pointer; font-size: 0.7rem; }
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; }
+        .lang-switch { background: var(--primary); color: white; border: none; padding: 6px 12px; font-weight: 900; cursor: pointer; font-size: 0.65rem; border-radius: 4px; }
 
-        /* Updated Parallax Logic */
+        /* Hero Section */
         .parallax {
-            height: 80vh;
+            height: 85vh;
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             display: flex; align-items: center; justify-content: center;
             position: relative;
-            /* This line helps iOS process the fixed background better */
-            -webkit-overflow-scrolling: touch; 
         }
         
-        .parallax::after { content: none; } 
+        /* Added a subtle gradient to ensure text readability on mobile */
+        .parallax::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
+            z-index: 1;
+        }
 
         .parallax-content { position: relative; z-index: 10; color: white; text-align: center; width: 100%; padding: 0 5%; }
         
         .hero-title { 
-            font-size: clamp(2.5rem, 8vw, 5.5rem); 
+            font-size: clamp(2.8rem, 10vw, 5.5rem); 
             font-weight: 900; 
-            line-height: 1; 
+            line-height: 0.9; 
             letter-spacing: -2px; 
             margin-bottom: 20px; 
             color: #FFFFFF;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
 
         .hero-sub { 
-            font-size: clamp(0.8rem, 3vw, 1.2rem); 
+            font-size: clamp(0.75rem, 4vw, 1.1rem); 
             font-weight: 700; 
-            letter-spacing: 3px; 
+            letter-spacing: 2px; 
             text-transform: uppercase; 
             border: 2px solid var(--secondary); 
             display: inline-block; 
-            padding: 10px 20px; 
-            background: transparent;
+            padding: 8px 16px; 
+            background: rgba(0,0,0,0.2);
             color: #FFFFFF;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            backdrop-filter: blur(2px);
         }
 
+        /* General Section Layout */
         .section { padding: 80px 8%; }
-        .section-title { font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; color: var(--primary); margin-bottom: 25px; letter-spacing: -1px; line-height: 1.1; text-transform: uppercase; }
+        .section-title { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 900; color: var(--primary); margin-bottom: 20px; letter-spacing: -1px; line-height: 1.1; text-transform: uppercase; }
         .section-title span { color: var(--secondary); }
 
-        .about-visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .img-container img { width: 100%; height: auto; display: block; box-shadow: 15px -15px 0 var(--primary); }
-
-        .dual-crisis-box { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
-        .crisis-item { padding: 20px; border: 1px solid #EEE; background: #FFF; }
-        .crisis-item h4 { color: var(--primary); font-weight: 900; margin-bottom: 5px; font-size: 0.8rem; }
-
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .service-card { background: #FFF; padding: 40px 30px; border: 1px solid #EEE; position: relative; }
-        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--primary); }
-        .service-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .metric-tag { background: var(--secondary); color: var(--text-dark); padding: 5px 12px; font-size: 0.7rem; font-weight: 900; margin-top: 20px; display: inline-block; }
-
-        #quick-exit { 
-            position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; 
-            width: 70px; height: 70px; border-radius: 50%; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; font-size: 0.65rem; cursor: pointer; 
-            border: 5px solid white; font-weight: 900; z-index: 10000; box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
+        /* Responsive About Grid */
+        .about-visual-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+            align-items: center; 
         }
 
-        /* --- MOBILE MEDIA QUERIES --- */
+        .img-container img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 12px -12px 0 var(--primary); }
+
+        .dual-crisis-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; }
+        .crisis-item { padding: 15px; border: 1px solid #EEE; background: #FFF; border-radius: 4px; }
+        .crisis-item h4 { color: var(--primary); font-weight: 900; margin-bottom: 5px; font-size: 0.75rem; }
+
+        /* Pillars Grid */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .service-card { background: #FFF; padding: 35px 25px; border: 1px solid #EEE; position: relative; border-radius: 4px; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--primary); }
+        .service-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
+        .metric-tag { background: var(--secondary); color: var(--text-dark); padding: 4px 10px; font-size: 0.65rem; font-weight: 900; margin-top: 15px; display: inline-block; border-radius: 2px; }
+
+        /* Responsive Roadmap */
+        .roadmap-phase { 
+            display: grid; 
+            grid-template-columns: 120px 1fr; 
+            gap: 20px; 
+            background: #FFF; 
+            padding: 25px; 
+            margin-bottom: 15px; 
+            border: 1px solid #EEE; 
+            border-radius: 4px;
+        }
+        .phase-label { background: var(--primary); color: white; text-align: center; padding: 15px; display: flex; flex-direction: column; justify-content: center; border-radius: 4px; }
+        .phase-label span { font-size: 0.7rem; font-weight: 700; opacity: 0.9; }
+        .phase-label h4 { font-size: 1.8rem; font-weight: 900; }
+
+        /* Budget Table Container */
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 25px; border: 1px solid #EEE; border-radius: 4px; }
+        .budget-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        .budget-table th { background: var(--primary); color: white; padding: 15px; text-align: left; font-size: 0.75rem; letter-spacing: 1px; }
+        .budget-table td { padding: 12px 15px; border-bottom: 1px solid #EEE; font-weight: 700; font-size: 0.9rem; }
+        .total-row { background: var(--secondary); color: var(--text-dark); }
+
+        /* Mobile Safety Button - Made slightly smaller for thumb reach */
+        #quick-exit { 
+            position: fixed; bottom: 15px; right: 15px; background: var(--accent); color: white; 
+            width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; font-size: 0.6rem; cursor: pointer; 
+            border: 4px solid white; font-weight: 900; z-index: 10000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+        }
+
+        /* --- REFINED MOBILE MEDIA QUERIES --- */
         @media (max-width: 768px) {
-            nav { padding: 1rem 3%; flex-direction: column; gap: 15px; text-align: center; }
-            .nav-links { gap: 15px; }
-            .section { padding: 60px 5%; }
-            .about-visual-grid { grid-template-columns: 1fr; }
-            .img-container { order: -1; }
+            nav { padding: 0.8rem 4%; flex-direction: row; } /* Kept row for logo/links balance */
+            .logo-main { font-size: 0.8rem; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.65rem; }
             
-            /* IMPORTANT: Removed the background-attachment: scroll; line here 
-               to attempt to force fixed parallax on mobile */
-            .parallax { 
-                height: 60vh; 
-                /* Fixed position hack for Safari */
-                background-attachment: fixed; 
-            }
+            .section { padding: 50px 6%; }
+            .about-visual-grid { grid-template-columns: 1fr; gap: 30px; }
+            .img-container { order: -1; margin-bottom: 10px; }
+            .img-container img { box-shadow: 8px -8px 0 var(--primary); }
+            
+            .roadmap-phase { grid-template-columns: 1fr; }
+            .phase-label { flex-direction: row; align-items: baseline; gap: 10px; padding: 10px; }
+            
+            /* Disable fixed background for mobile performance/stability */
+            .parallax { background-attachment: scroll; height: 60vh; } 
+        }
+
+        @media (max-width: 480px) {
+            nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .logo-container { width: 100%; justify-content: center; margin-bottom: 5px; }
+            .hero-title { letter-spacing: -1px; }
+            .dual-crisis-box { grid-template-columns: 1fr; }
+            .hero-sub { letter-spacing: 1px; padding: 6px 12px; }
+            .section-title { text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <button id="quick-exit" onclick="window.location.href='https://google.com'">
-        <i class="fas fa-door-open" style="font-size: 1rem; margin-bottom: 2px;"></i>
-        <span>EXIT</span>
+        <i class="fas fa-door-open" style="font-size: 0.9rem; margin-bottom: 2px;"></i>
+        <span data-en="EXIT" data-es="SALIR">EXIT</span>
     </button>
 
     <nav>
@@ -139,26 +187,36 @@
             <span class="logo-main">BEACON OF LIGHT</span>
         </a>
         <div class="nav-links">
-            <a href="#about">Strategy</a>
-            <a href="#services">Pillars</a>
-            <a href="#impact">Plan</a>
-            <button class="lang-switch" onclick="toggleLanguage()">ESPAÑOL</button>
+            <a href="#about" data-en="Strategy" data-es="Estrategia">Strategy</a>
+            <a href="#impact" data-en="Plan" data-es="Plan">Plan</a>
+            <button class="lang-switch" onclick="toggleLanguage()">ES</button>
         </div>
     </nav>
 
     <header class="parallax" style="background-image: url('Patsy_Portrait.jpg');">
         <div class="parallax-content">
-            <h1 class="hero-title">BEYOND<br>SURVIVAL</h1>
-            <p class="hero-sub">Total Transformation</p>
+            <h1 class="hero-title" data-en="BEYOND<br>SURVIVAL" data-es="MÁS QUE<br>SOBREVIVIR">BEYOND<br>SURVIVAL</h1>
+            <p class="hero-sub" data-en="Total Transformation" data-es="Transformación Total">Total Transformation</p>
         </div>
     </header>
 
     <section class="section" id="about">
         <div class="about-visual-grid">
             <div class="about-content">
-                <h2 class="section-title">MORE THAN A<br><span>SHELTER</span></h2>
-                <p style="font-weight: 700; color: var(--primary); margin-bottom: 20px;">We tackle generational trauma.</p>
-                <p style="font-size: 1rem; line-height: 1.6; color: #555; margin-bottom: 20px;">Domestic violence is an economic crisis. We provide a bilingual sanctuary where safety meets financial autonomy.</p>
+                <h2 class="section-title" data-en="MORE THAN A<br><span>SHELTER</span>" data-es="MÁS QUE UN<br><span>REFUGIO</span>">MORE THAN A<br><span>SHELTER</span></h2>
+                <p style="font-weight: 700; color: var(--primary); margin-bottom: 15px;" data-en="We tackle generational trauma." data-es="Atacamos el trauma generacional.">We tackle generational trauma.</p>
+                <p style="font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 20px;" data-en="Domestic violence is an economic crisis. We provide a bilingual sanctuary where safety meets financial autonomy." data-es="La violencia doméstica es una crisis económica. Brindamos un santuario bilingüe.">Domestic violence is an economic crisis. We provide a bilingual sanctuary where safety meets financial autonomy.</p>
+                
+                <div class="dual-crisis-box">
+                    <div class="crisis-item">
+                        <h4 data-en="IDENTITY" data-es="IDENTIDAD">IDENTITY</h4>
+                        <p style="font-size: 0.75rem;">Trauma-informed support.</p>
+                    </div>
+                    <div class="crisis-item">
+                        <h4 data-en="ECONOMY" data-es="ECONOMÍA">ECONOMÍA</h4>
+                        <p style="font-size: 0.75rem;">Career & Financial freedom.</p>
+                    </div>
+                </div>
             </div>
             <div class="img-container">
                 <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80&w=1000" alt="Supportive Community">
@@ -166,11 +224,65 @@
         </div>
     </section>
 
+    <section class="section" id="services" style="background: #FAFAFA;">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-en="THE 10 PILLARS" data-es="LOS 10 PILARES">THE 10 PILLARS</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <i class="fas fa-home"></i>
+                <h3 style="font-weight: 900; margin-bottom: 10px; font-size: 1.1rem;" data-en="Safe Housing" data-es="Vivienda">Safe Housing</h3>
+                <p style="font-size: 0.85rem;" data-en="10 furnished, confidential homes." data-es="10 casas confidenciales.">10 furnished, confidential homes.</p>
+                <div class="metric-tag" data-en="50 Families" data-es="50 Familias">50 Families</div>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-briefcase"></i>
+                <h3 style="font-weight: 900; margin-bottom: 10px; font-size: 1.1rem;" data-en="Careers" data-es="Carreras">Careers</h3>
+                <p style="font-size: 0.85rem;" data-en="Training in healthcare and tech." data-es="Capacitación tecnológica.">Training in healthcare and tech.</p>
+                <div class="metric-tag" data-en="75% Success" data-es="75% Éxito">75% Success</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="impact">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-en="5-YEAR PLAN" data-es="PLAN 5 AÑOS">5-YEAR PLAN</h2>
+        <div class="roadmap-phase">
+            <div class="phase-label"><span>YRS</span><h4>1-2</h4></div>
+            <div class="phase-details">
+                <h3 style="color: var(--primary); margin-bottom: 10px; font-size: 1.1rem;" data-en="FOUNDATION" data-es="FUNDACIÓN">FOUNDATION</h3>
+                <p style="font-weight: 700; font-size: 0.85rem;">✓ 4 properties acquired<br>✓ Legal clinics launch</p>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th data-en="CATEGORY" data-es="CATEGORÍA">CATEGORY</th>
+                        <th data-en="5-YEAR TOTAL" data-es="TOTAL">5-YEAR TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Housing & Capital Assets</td><td>$5,400,000</td></tr>
+                    <tr class="total-row"><td>TOTAL REQUEST</td><td>$7,342,000</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 10%; background: #1A1A1A; color: white; text-align: center;">
+        <p style="font-weight: 900; letter-spacing: 2px; font-size: 0.9rem;">BEACON OF LIGHT</p>
+        <p style="color: #888; font-size: 0.75rem; margin-top: 10px;">contact@beaconoflight.org</p>
+    </footer>
+
     <script>
         let currentLang = 'en';
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
-            document.querySelector('.lang-switch').innerText = currentLang === 'en' ? 'ESPAÑOL' : 'ENGLISH';
+            document.querySelector('.lang-switch').innerText = currentLang === 'en' ? 'ES' : 'EN';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if(el.innerHTML.includes('<br')) { el.innerHTML = text; } 
+                else { el.innerText = text; }
+            });
         }
     </script>
 </body>
