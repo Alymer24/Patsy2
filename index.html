@@ -36,6 +36,9 @@
         .nav-links a { text-decoration: none; color: rgba(255,255,255,0.8); font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .lang-switch { border: 1px solid var(--gold); background: none; color: var(--gold); padding: 5px 12px; font-weight: 700; cursor: pointer; border-radius: 2px; font-size: 0.6rem; }
 
+        /* Hamburger Menu Icon */
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
         /* Hero */
         .hero { height: 100vh; background: linear-gradient(to right, rgba(31, 42, 68, 0.9), rgba(31, 42, 68, 0.4)), url('Patsy_Portrait.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; padding: 0 8%; color: white; }
         .hero-logo { max-width: 450px; margin-bottom: 20px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
@@ -120,14 +123,20 @@
 
         .hidden { display: none; }
 
-        /* ONLY ADJUSTED MOBILE CSS FOR THE HERO ELEMENTS */
+        /* Mobile Adjustments */
         @media (max-width: 900px) {
-            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .nav-links { 
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: var(--navy); flex-direction: column; padding: 20px; gap: 15px; 
+                border-top: 1px solid rgba(255,255,255,0.1); text-align: center;
+            }
+            .nav-links.active { display: flex; }
             .grid-2, .impact-container { grid-template-columns: 1fr; }
-            .hero { text-align: center; flex-direction: column; justify-content: center; }
+            .hero { text-align: center; }
             .tier-card { width: calc(50% - 12px); }
 
-            /* Scaling requested Hero elements */
+            /* Target specific hero scaling as requested previously */
             .hero-logo { max-width: 280px !important; margin-bottom: 15px !important; }
             .hero-title { font-size: 1.8rem !important; line-height: 1.2 !important; margin-bottom: 25px !important; }
             .hero .btn-action { padding: 15px 30px !important; font-size: 0.7rem !important; width: 90% !important; }
@@ -139,15 +148,21 @@
 </head>
 <body>
 
+    <div id="quick-exit" onclick="window.location.href='https://google.com'">
+        <i class="fas fa-running"></i>
+        <span>EXIT</span>
+    </div>
+
     <nav>
         <a href="#" class="logo-container">
             <img src="Logo.png" alt="Beacon of Light Logo" class="logo-img">
         </a>
-        <div class="nav-links">
-            <a href="#about" data-en="Story" data-es="Historia">Story</a>
-            <a href="#beacon-hub" data-en="Hub" data-es="Centro">Hub</a>
-            <a href="#donate" data-en="Support" data-es="Apoyo">Support</a>
-            <a href="#volunteer" data-en="Volunteer" data-es="Voluntarios">Volunteer</a>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="#about" onclick="toggleMenu()" data-en="Story" data-es="Historia">Story</a>
+            <a href="#beacon-hub" onclick="toggleMenu()" data-en="Hub" data-es="Centro">Hub</a>
+            <a href="#donate" onclick="toggleMenu()" data-en="Support" data-es="Apoyo">Support</a>
+            <a href="#volunteer" onclick="toggleMenu()" data-en="Volunteer" data-es="Voluntarios">Volunteer</a>
             <button class="lang-switch" onclick="toggleLanguage()">ES</button>
         </div>
     </nav>
@@ -374,6 +389,11 @@
     </div>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
         function toggleLanguage() {
             const btn = document.querySelector('.lang-switch');
             const isEn = btn.innerText === 'ES';
