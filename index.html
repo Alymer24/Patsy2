@@ -13,7 +13,7 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-        body { color: var(--text); background: var(--cream); scroll-behavior: smooth; overflow-x: hidden; padding-top: 75px; }
+        body { color: var(--text); background: var(--cream); scroll-behavior: smooth; overflow-x: hidden; }
 
         /* Quick Exit */
         #quick-exit { 
@@ -27,7 +27,7 @@
         nav {
             background: var(--navy); padding: 0.8rem 8%;
             display: flex; justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; top: 0; z-index: 2000; height: 75px;
+            position: fixed; width: 100%; top: 0; z-index: 2000;
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; }
         .logo-img { height: 55px; width: auto; transition: 0.3s; }
@@ -35,12 +35,9 @@
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { text-decoration: none; color: rgba(255,255,255,0.8); font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .lang-switch { border: 1px solid var(--gold); background: none; color: var(--gold); padding: 5px 12px; font-weight: 700; cursor: pointer; border-radius: 2px; font-size: 0.6rem; }
-        
-        /* Mobile Hamburger Icon */
-        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
         /* Hero */
-        .hero { height: calc(100vh - 75px); background: linear-gradient(to right, rgba(31, 42, 68, 0.9), rgba(31, 42, 68, 0.4)), url('Patsy_Portrait.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; padding: 0 8%; color: white; }
+        .hero { height: 100vh; background: linear-gradient(to right, rgba(31, 42, 68, 0.9), rgba(31, 42, 68, 0.4)), url('Patsy_Portrait.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; padding: 0 8%; color: white; }
         .hero-logo { max-width: 450px; margin-bottom: 20px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
         .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
         .hero-title span { color: var(--gold); }
@@ -86,15 +83,11 @@
         .pillar-card:hover { transform: translateY(-10px); border: 1px solid var(--gold); box-shadow: 0 15px 30px rgba(198, 167, 94, 0.2); }
         .pillar-card i { font-size: 2.2rem; color: var(--gold); margin-bottom: 15px; }
 
-        /* Donation Dashboard - FIXED LOGIC */
+        /* Donation Dashboard */
         .donation-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .tab-btn { padding: 12px 25px; border: 2px solid var(--navy); background: none; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 0.75rem; border-radius: 4px; transition: 0.3s; }
         .tab-btn.active { background: var(--navy); color: white; }
         .donation-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 1400px; margin: 0 auto; }
-        
-        /* Ensure hidden truly hides flex items */
-        .donation-grid.hidden { display: none !important; }
-
         .tier-card { 
             background: white; border: 1px solid #eee; padding: 15px; border-radius: 8px; text-align: center; 
             transition: 0.3s; width: calc(25% - 12px); min-width: 200px; display: flex; flex-direction: column; 
@@ -127,37 +120,30 @@
 
         .hidden { display: none; }
 
-        /* MOBILE OVERRIDES - NO CONTENT REMOVED */
-        @media (max-width: 1024px) { .tier-card { width: calc(33.33% - 12px); } }
+        /* ONLY ADJUSTED MOBILE CSS FOR THE HERO ELEMENTS */
         @media (max-width: 900px) {
-            .menu-toggle { display: block; }
-            .nav-links { 
-                display: none; position: absolute; top: 75px; left: 0; width: 100%; 
-                background: var(--navy); flex-direction: column; padding: 20px; gap: 15px; 
-                border-top: 1px solid rgba(255,255,255,0.1); 
-            }
-            .nav-links.active { display: flex; }
+            .nav-links { display: none; }
             .grid-2, .impact-container { grid-template-columns: 1fr; }
-            .hero { text-align: center; }
+            .hero { text-align: center; flex-direction: column; justify-content: center; }
             .tier-card { width: calc(50% - 12px); }
-            .section { padding: 60px 5%; }
+
+            /* Scaling requested Hero elements */
+            .hero-logo { max-width: 280px !important; margin-bottom: 15px !important; }
+            .hero-title { font-size: 1.8rem !important; line-height: 1.2 !important; margin-bottom: 25px !important; }
+            .hero .btn-action { padding: 15px 30px !important; font-size: 0.7rem !important; width: 90% !important; }
         }
+
+        @media (max-width: 1024px) { .tier-card { width: calc(33.33% - 12px); } }
         @media (max-width: 480px) { .tier-card { width: 100%; } }
     </style>
 </head>
 <body>
 
-    <div id="quick-exit" onclick="window.location.href='https://google.com'">
-        <i class="fas fa-running"></i>
-        <span>EXIT</span>
-    </div>
-
     <nav>
         <a href="#" class="logo-container">
             <img src="Logo.png" alt="Beacon of Light Logo" class="logo-img">
         </a>
-        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        <div class="nav-links" id="navLinks">
+        <div class="nav-links">
             <a href="#about" data-en="Story" data-es="Historia">Story</a>
             <a href="#beacon-hub" data-en="Hub" data-es="Centro">Hub</a>
             <a href="#donate" data-en="Support" data-es="Apoyo">Support</a>
@@ -388,10 +374,6 @@
     </div>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
         function toggleLanguage() {
             const btn = document.querySelector('.lang-switch');
             const isEn = btn.innerText === 'ES';
@@ -402,42 +384,20 @@
                 el.innerHTML = isEn ? es : en;
             });
         }
-
         function toggleAccordion(header) {
             const item = header.parentElement;
             item.classList.toggle('active');
             const content = header.nextElementSibling;
             content.style.display = item.classList.contains('active') ? 'block' : 'none';
         }
-
         function showTiers(type) {
-            const monthly = document.getElementById('monthly-grid');
-            const once = document.getElementById('once-grid');
-            const btnM = document.getElementById('btn-m');
-            const btnO = document.getElementById('btn-o');
-
-            if (type === 'monthly') {
-                monthly.classList.remove('hidden');
-                once.classList.add('hidden');
-                btnM.classList.add('active');
-                btnO.classList.remove('active');
-            } else {
-                once.classList.remove('hidden');
-                monthly.classList.add('hidden');
-                btnO.classList.add('active');
-                btnM.classList.remove('active');
-            }
+            document.getElementById('monthly-grid').classList.toggle('hidden', type !== 'monthly');
+            document.getElementById('once-grid').classList.toggle('hidden', type !== 'once');
+            document.getElementById('btn-m').classList.toggle('active', type === 'monthly');
+            document.getElementById('btn-o').classList.toggle('active', type === 'once');
         }
-
         function openModal() { document.getElementById('transModal').style.display = "block"; }
         function closeModal() { document.getElementById('transModal').style.display = "none"; }
-        
-        // Close menu on click
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-            });
-        });
     </script>
 </body>
 </html>
