@@ -3,284 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation Beacon of Light and Resilience</title>
+    <title>Beacon of Light & Resilience | Emergency Safe Nights Pilot</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #008080;     /* Electric Teal */
-            --secondary: #FFB300;   /* Vivid Amber */
-            --accent: #D32F2F;      /* Sharp Red */
-            --bg-light: #FFFFFF;    /* Arctic White */
-            --text-dark: #1A1A1A;
-            --card-shadow: 0 20px 40px rgba(0, 128, 128, 0.1);
+            --navy: #1F2A44;
+            --rose: #B56576;
+            --cream: #F6F1EC;
+            --gold: #C6A75E;
+            --white: #FFFFFF;
+            --text: #2D2D2D;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-        body { color: var(--text-dark); background: var(--bg-light); scroll-behavior: smooth; overflow-x: hidden; }
+        body { color: var(--text); background: var(--cream); scroll-behavior: smooth; line-height: 1.6; }
 
         /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.98);
+            background: var(--navy);
             padding: 1rem 5%;
             display: flex; justify-content: space-between; align-items: center;
             position: sticky; top: 0; z-index: 2000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
+        .logo-main { font-weight: 900; font-size: 1.1rem; color: var(--gold); letter-spacing: 1px; text-decoration: none; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: white; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; }
+        .lang-switch { background: var(--gold); color: var(--navy); border: none; padding: 6px 12px; font-weight: 900; cursor: pointer; border-radius: 4px; }
 
-        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .beacon-icon {
-            width: 30px; height: 30px; background: var(--primary);
-            display: flex; align-items: center; justify-content: center;
-            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-            position: relative;
+        /* Hero */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(31, 42, 68, 0.7), rgba(31, 42, 68, 0.7)), url('Patsy_Portrait.jpg');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 5%;
         }
-        .beacon-icon::before {
-            content: ''; position: absolute; top: 15%; width: 6px; height: 6px;
-            background: var(--secondary); border-radius: 50%;
-            box-shadow: 0 0 10px var(--secondary);
-        }
-        .logo-main { font-weight: 900; font-size: 1rem; color: var(--primary); letter-spacing: 1px; }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; line-height: 1; margin-bottom: 20px; }
+        .hero-sub { font-size: 1.2rem; border: 2px solid var(--gold); padding: 10px 20px; display: inline-block; background: rgba(0,0,0,0.3); }
 
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; }
-        .lang-switch { background: var(--primary); color: white; border: none; padding: 6px 12px; font-weight: 900; cursor: pointer; font-size: 0.65rem; border-radius: 4px; }
+        /* Sections */
+        .section { padding: 80px 10%; }
+        .section-title { font-size: 2.5rem; font-weight: 900; color: var(--navy); margin-bottom: 30px; text-transform: uppercase; }
+        .section-title span { color: var(--rose); }
 
-        /* Hero Section */
-        .parallax {
-            height: 85vh;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-        }
+        /* Pilot Card */
+        .pilot-box { background: var(--white); padding: 40px; border-left: 8px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 4px; }
         
-        /* Added a subtle gradient to ensure text readability on mobile */
-        .parallax::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
-            z-index: 1;
-        }
-
-        .parallax-content { position: relative; z-index: 10; color: white; text-align: center; width: 100%; padding: 0 5%; }
+        /* Donation Dashboard */
+        .donation-container { text-align: center; background: var(--white); padding: 50px 5%; border-radius: 8px; }
+        .toggle-container { margin-bottom: 40px; }
+        .toggle-btn { padding: 12px 30px; border: 2px solid var(--navy); background: none; cursor: pointer; font-weight: 900; transition: 0.3s; }
+        .toggle-btn.active { background: var(--navy); color: white; }
         
-        .hero-title { 
-            font-size: clamp(2.8rem, 10vw, 5.5rem); 
-            font-weight: 900; 
-            line-height: 0.9; 
-            letter-spacing: -2px; 
-            margin-bottom: 20px; 
-            color: #FFFFFF;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-        }
+        .donation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .tier-card { background: var(--cream); padding: 30px; border-radius: 8px; border: 1px solid #ddd; transition: 0.3s; position: relative; }
+        .tier-card.highlight { border: 3px solid var(--gold); transform: scale(1.03); background: #fff; }
+        .tier-card h3 { color: var(--navy); font-size: 1.4rem; margin-bottom: 10px; }
+        .tier-price { font-size: 2rem; font-weight: 900; color: var(--rose); margin-bottom: 15px; }
+        .donate-btn { background: var(--navy); color: white; padding: 12px; width: 100%; border: none; font-weight: 900; cursor: pointer; margin-top: 15px; border-radius: 4px; }
+        .tier-card.highlight .donate-btn { background: var(--gold); color: var(--navy); }
 
-        .hero-sub { 
-            font-size: clamp(0.75rem, 4vw, 1.1rem); 
-            font-weight: 700; 
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            border: 2px solid var(--secondary); 
-            display: inline-block; 
-            padding: 8px 16px; 
-            background: rgba(0,0,0,0.2);
-            color: #FFFFFF;
-            backdrop-filter: blur(2px);
-        }
+        /* Roadmap Grid */
+        .roadmap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .roadmap-item { background: var(--white); padding: 25px; border-radius: 4px; }
+        .roadmap-item h4 { color: var(--rose); margin-bottom: 10px; }
 
-        /* General Section Layout */
-        .section { padding: 80px 8%; }
-        .section-title { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 900; color: var(--primary); margin-bottom: 20px; letter-spacing: -1px; line-height: 1.1; text-transform: uppercase; }
-        .section-title span { color: var(--secondary); }
+        /* Beacon Stars Rewards */
+        .stars-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        .stars-table th, .stars-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
+        .stars-table th { background: var(--navy); color: white; }
 
-        /* Responsive About Grid */
-        .about-visual-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px; 
-            align-items: center; 
-        }
+        /* Forms */
+        .input-field { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; }
 
-        .img-container img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 12px -12px 0 var(--primary); }
-
-        .dual-crisis-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; }
-        .crisis-item { padding: 15px; border: 1px solid #EEE; background: #FFF; border-radius: 4px; }
-        .crisis-item h4 { color: var(--primary); font-weight: 900; margin-bottom: 5px; font-size: 0.75rem; }
-
-        /* Pillars Grid */
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .service-card { background: #FFF; padding: 35px 25px; border: 1px solid #EEE; position: relative; border-radius: 4px; }
-        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--primary); }
-        .service-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
-        .metric-tag { background: var(--secondary); color: var(--text-dark); padding: 4px 10px; font-size: 0.65rem; font-weight: 900; margin-top: 15px; display: inline-block; border-radius: 2px; }
-
-        /* Responsive Roadmap */
-        .roadmap-phase { 
-            display: grid; 
-            grid-template-columns: 120px 1fr; 
-            gap: 20px; 
-            background: #FFF; 
-            padding: 25px; 
-            margin-bottom: 15px; 
-            border: 1px solid #EEE; 
-            border-radius: 4px;
-        }
-        .phase-label { background: var(--primary); color: white; text-align: center; padding: 15px; display: flex; flex-direction: column; justify-content: center; border-radius: 4px; }
-        .phase-label span { font-size: 0.7rem; font-weight: 700; opacity: 0.9; }
-        .phase-label h4 { font-size: 1.8rem; font-weight: 900; }
-
-        /* Budget Table Container */
-        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 25px; border: 1px solid #EEE; border-radius: 4px; }
-        .budget-table { width: 100%; border-collapse: collapse; min-width: 500px; }
-        .budget-table th { background: var(--primary); color: white; padding: 15px; text-align: left; font-size: 0.75rem; letter-spacing: 1px; }
-        .budget-table td { padding: 12px 15px; border-bottom: 1px solid #EEE; font-weight: 700; font-size: 0.9rem; }
-        .total-row { background: var(--secondary); color: var(--text-dark); }
-
-        /* Mobile Safety Button - Made slightly smaller for thumb reach */
+        /* Quick Exit */
         #quick-exit { 
-            position: fixed; bottom: 15px; right: 15px; background: var(--accent); color: white; 
-            width: 60px; height: 60px; border-radius: 50%; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; font-size: 0.6rem; cursor: pointer; 
-            border: 4px solid white; font-weight: 900; z-index: 10000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+            position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; 
+            width: 70px; height: 70px; border-radius: 50%; border: 4px solid white;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 0.7rem; cursor: pointer; z-index: 9999;
         }
 
-        /* --- REFINED MOBILE MEDIA QUERIES --- */
+        .hidden { display: none; }
+
         @media (max-width: 768px) {
-            nav { padding: 0.8rem 4%; flex-direction: row; } /* Kept row for logo/links balance */
-            .logo-main { font-size: 0.8rem; }
-            .nav-links { gap: 10px; }
-            .nav-links a { font-size: 0.65rem; }
-            
-            .section { padding: 50px 6%; }
-            .about-visual-grid { grid-template-columns: 1fr; gap: 30px; }
-            .img-container { order: -1; margin-bottom: 10px; }
-            .img-container img { box-shadow: 8px -8px 0 var(--primary); }
-            
-            .roadmap-phase { grid-template-columns: 1fr; }
-            .phase-label { flex-direction: row; align-items: baseline; gap: 10px; padding: 10px; }
-            
-            /* Disable fixed background for mobile performance/stability */
-            .parallax { background-attachment: scroll; height: 60vh; } 
-        }
-
-        @media (max-width: 480px) {
-            nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .logo-container { width: 100%; justify-content: center; margin-bottom: 5px; }
-            .hero-title { letter-spacing: -1px; }
-            .dual-crisis-box { grid-template-columns: 1fr; }
-            .hero-sub { letter-spacing: 1px; padding: 6px 12px; }
-            .section-title { text-align: center; }
+            .roadmap-grid { grid-template-columns: 1fr; }
+            .section { padding: 50px 5%; }
         }
     </style>
 </head>
 <body>
 
-    <button id="quick-exit" onclick="window.location.href='https://google.com'">
-        <i class="fas fa-door-open" style="font-size: 0.9rem; margin-bottom: 2px;"></i>
-        <span data-en="EXIT" data-es="SALIR">EXIT</span>
+    <button id="quick-exit" onclick="window.location.href='https://weather.com'">
+        <i class="fas fa-running"></i><span>EXIT</span>
     </button>
 
     <nav>
-        <a href="#" class="logo-container">
-            <div class="beacon-icon"></div>
-            <span class="logo-main">BEACON OF LIGHT</span>
-        </a>
+        <a href="#" class="logo-main">BEACON OF LIGHT</a>
         <div class="nav-links">
-            <a href="#about" data-en="Strategy" data-es="Estrategia">Strategy</a>
-            <a href="#impact" data-en="Plan" data-es="Plan">Plan</a>
+            <a href="#mission" data-en="Mission" data-es="Misión">Mission</a>
+            <a href="#donate" data-en="Donate" data-es="Donar">Donate</a>
+            <a href="#volunteer" data-en="Volunteer" data-es="Voluntarios">Volunteer</a>
             <button class="lang-switch" onclick="toggleLanguage()">ES</button>
         </div>
     </nav>
 
-    <header class="parallax" style="background-image: url('Patsy_Portrait.jpg');">
-        <div class="parallax-content">
-            <h1 class="hero-title" data-en="BEYOND<br>SURVIVAL" data-es="MÁS QUE<br>SOBREVIVIR">BEYOND<br>SURVIVAL</h1>
-            <p class="hero-sub" data-en="Total Transformation" data-es="Transformación Total">Total Transformation</p>
+    <header class="hero">
+        <div>
+            <h1 class="hero-title" data-en="BEYOND SURVIVAL" data-es="MÁS QUE SOBREVIVIR">BEYOND SURVIVAL</h1>
+            <p class="hero-sub" data-en="Emergency Safe Nights Pilot" data-es="Programa Piloto de Noches Seguras">Emergency Safe Nights Pilot</p>
         </div>
     </header>
 
-    <section class="section" id="about">
-        <div class="about-visual-grid">
-            <div class="about-content">
-                <h2 class="section-title" data-en="MORE THAN A<br><span>SHELTER</span>" data-es="MÁS QUE UN<br><span>REFUGIO</span>">MORE THAN A<br><span>SHELTER</span></h2>
-                <p style="font-weight: 700; color: var(--primary); margin-bottom: 15px;" data-en="We tackle generational trauma." data-es="Atacamos el trauma generacional.">We tackle generational trauma.</p>
-                <p style="font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 20px;" data-en="Domestic violence is an economic crisis. We provide a bilingual sanctuary where safety meets financial autonomy." data-es="La violencia doméstica es una crisis económica. Brindamos un santuario bilingüe.">Domestic violence is an economic crisis. We provide a bilingual sanctuary where safety meets financial autonomy.</p>
-                
-                <div class="dual-crisis-box">
-                    <div class="crisis-item">
-                        <h4 data-en="IDENTITY" data-es="IDENTIDAD">IDENTITY</h4>
-                        <p style="font-size: 0.75rem;">Trauma-informed support.</p>
-                    </div>
-                    <div class="crisis-item">
-                        <h4 data-en="ECONOMY" data-es="ECONOMÍA">ECONOMÍA</h4>
-                        <p style="font-size: 0.75rem;">Career & Financial freedom.</p>
-                    </div>
+    <section class="section" id="mission">
+        <div class="pilot-box">
+            <h2 class="section-title" data-en="THE <span>PILOT</span>" data-es="EL <span>PILOTO</span>">THE <span>PILOT</span></h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;" data-en="When local shelters are full, survivors often have nowhere safe to stay. Our Emergency Safe Nights Fund provides temporary hotel accommodations for 1–3 nights, ensuring immediate safety while longer-term solutions are arranged." data-es="Cuando los refugios locales están llenos, los sobrevivientes a menudo no tienen un lugar seguro donde quedarse. Nuestro Fondo de Noches Seguras de Emergencia brinda alojamiento temporal en hoteles por 1 a 3 noches.">
+                When local shelters are full, survivors often have nowhere safe to stay. Our Emergency Safe Nights Fund provides temporary hotel accommodations for 1–3 nights, ensuring immediate safety while longer-term solutions are arranged.
+            </p>
+            <div class="roadmap-grid">
+                <div class="roadmap-item">
+                    <h4 data-en="YEAR 1-2 GOALS" data-es="METAS AÑO 1-2">YEAR 1-2 GOALS</h4>
+                    <ul style="padding-left: 20px;">
+                        <li data-en="50-100 Emergency Hotel Stays" data-es="50-100 Estadías de Emergencia">50-100 Emergency Hotel Stays</li>
+                        <li data-en="10 Healthy Relationship Workshops" data-es="10 Talleres de Relaciones Saludables">10 Healthy Relationship Workshops</li>
+                        <li data-en="20 Court Accompaniments" data-es="20 Acompañamientos Judiciales">20 Court Accompaniments</li>
+                    </ul>
+                </div>
+                <div class="roadmap-item" style="background: var(--navy); color: white;">
+                    <h4 style="color: var(--gold);" data-en="FOUNDER'S PLEDGE" data-es="PROMESA DE LA FUNDADORA">FOUNDER'S PLEDGE</h4>
+                    <p data-en="Patsy Arrechea is personally seeding the first emergency nights to ensure the program is active and trackable from day one." data-es="Patsy Arrechea está financiando personalmente las primeras noches de emergencia para asegurar que el programa esté activo.">
+                        Patsy Arrechea is personally seeding the first emergency nights to ensure the program is active and trackable from day one.
+                    </p>
                 </div>
             </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80&w=1000" alt="Supportive Community">
+        </div>
+    </section>
+
+    <section class="section" id="donate" style="background: var(--white);">
+        <h2 class="section-title" style="text-align: center;" data-en="SUPPORT OUR <span>MISSION</span>" data-es="APOYA NUESTRA <span>MISIÓN</span>">SUPPORT OUR <span>MISSION</span></h2>
+        
+        <div class="toggle-container" style="text-align: center;">
+            <button id="btn-monthly" class="toggle-btn active" onclick="showDonation('monthly')">Monthly</button>
+            <button id="btn-onetime" class="toggle-btn" onclick="showDonation('onetime')">One-Time</button>
+        </div>
+
+        <div id="monthly-tiers" class="donation-grid">
+            <div class="tier-card">
+                <h3 data-en="Hope Sponsor" data-es="Patrocinador de Esperanza">Hope Sponsor</h3>
+                <div class="tier-price">$10/mo</div>
+                <p data-en="Provides educational materials for teen workshops." data-es="Proporciona materiales educativos para talleres de adolescentes.">Provides educational materials for teen workshops.</p>
+                <button class="donate-btn">Donate $10/mo</button>
+            </div>
+            <div class="tier-card highlight">
+                <h3 data-en="Safe Nights Partner" data-es="Socio de Noches Seguras">Safe Nights Partner</h3>
+                <div class="tier-price">$50/mo</div>
+                <p data-en="Funds emergency hotel stays when shelters are full." data-es="Financia estadías de emergencia en hoteles cuando los refugios están llenos.">Funds emergency hotel stays when shelters are full.</p>
+                <button class="donate-btn">Donate $50/mo</button>
+            </div>
+            <div class="tier-card">
+                <h3 data-en="Justice Champion" data-es="Campeón de Justicia">Justice Champion</h3>
+                <div class="tier-price">$100/mo</div>
+                <p data-en="Ensures survivors are not alone during restraining order hearings." data-es="Asegura que los sobrevivientes no estén solos en las audiencias.">Ensures survivors are not alone during restraining order hearings.</p>
+                <button class="donate-btn">Donate $100/mo</button>
+            </div>
+        </div>
+
+        <div id="onetime-tiers" class="donation-grid hidden">
+            <div class="tier-card">
+                <h3 data-en="Bright Hope" data-es="Brillante Esperanza">Bright Hope</h3>
+                <div class="tier-price">$20</div>
+                <p data-en="Funds comfort kits and hygiene items." data-es="Financia kits de comodidad y artículos de higiene.">Funds comfort kits and hygiene items.</p>
+                <button class="donate-btn">Give $20</button>
+            </div>
+            <div class="tier-card highlight">
+                <h3 data-en="One Safe Night" data-es="Una Noche Segura">One Safe Night</h3>
+                <div class="tier-price">$150</div>
+                <p data-en="Funds one emergency hotel night for a family." data-es="Financia una noche de hotel de emergencia para una familia.">Funds one emergency hotel night for a family.</p>
+                <button class="donate-btn">Give $150</button>
+            </div>
+            <div class="tier-card">
+                <h3 data-en="Safe Weekend" data-es="Fin de Semana Seguro">Safe Weekend</h3>
+                <div class="tier-price">$300</div>
+                <p data-en="Covers a short emergency stay during placement coordination." data-es="Cubre una estancia corta de emergencia.">Covers a short emergency stay during placement coordination.</p>
+                <button class="donate-btn">Give $300</button>
             </div>
         </div>
     </section>
 
-    <section class="section" id="services" style="background: #FAFAFA;">
-        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-en="THE 10 PILLARS" data-es="LOS 10 PILARES">THE 10 PILLARS</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <i class="fas fa-home"></i>
-                <h3 style="font-weight: 900; margin-bottom: 10px; font-size: 1.1rem;" data-en="Safe Housing" data-es="Vivienda">Safe Housing</h3>
-                <p style="font-size: 0.85rem;" data-en="10 furnished, confidential homes." data-es="10 casas confidenciales.">10 furnished, confidential homes.</p>
-                <div class="metric-tag" data-en="50 Families" data-es="50 Familias">50 Families</div>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-briefcase"></i>
-                <h3 style="font-weight: 900; margin-bottom: 10px; font-size: 1.1rem;" data-en="Careers" data-es="Carreras">Careers</h3>
-                <p style="font-size: 0.85rem;" data-en="Training in healthcare and tech." data-es="Capacitación tecnológica.">Training in healthcare and tech.</p>
-                <div class="metric-tag" data-en="75% Success" data-es="75% Éxito">75% Success</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="impact">
-        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-en="5-YEAR PLAN" data-es="PLAN 5 AÑOS">5-YEAR PLAN</h2>
-        <div class="roadmap-phase">
-            <div class="phase-label"><span>YRS</span><h4>1-2</h4></div>
-            <div class="phase-details">
-                <h3 style="color: var(--primary); margin-bottom: 10px; font-size: 1.1rem;" data-en="FOUNDATION" data-es="FUNDACIÓN">FOUNDATION</h3>
-                <p style="font-weight: 700; font-size: 0.85rem;">✓ 4 properties acquired<br>✓ Legal clinics launch</p>
-            </div>
-        </div>
-
-        <div class="table-wrapper">
-            <table class="budget-table">
+    <section class="section" id="volunteer">
+        <h2 class="section-title" data-en="VOLUNTEER & <span>EARN STARS</span>" data-es="VOLUNTARIOS Y <span>ESTRELLAS</span>">VOLUNTEER & <span>EARN STARS</span></h2>
+        <div class="pilot-box" style="border-left-color: var(--rose);">
+            <p data-en="Join Beacon Nights—our community resource events. Every volunteer and attendee earns Beacon Stars redeemable for rewards." data-es="Únase a Beacon Nights. Cada voluntario y asistente gana Beacon Stars canjeables por recompensas.">
+                Join Beacon Nights—our community resource events. Every volunteer and attendee earns Beacon Stars redeemable for rewards.
+            </p>
+            
+            <table class="stars-table">
                 <thead>
-                    <tr>
-                        <th data-en="CATEGORY" data-es="CATEGORÍA">CATEGORY</th>
-                        <th data-en="5-YEAR TOTAL" data-es="TOTAL">5-YEAR TOTAL</th>
-                    </tr>
+                    <tr><th data-en="Stars Earned" data-es="Estrellas">Stars Earned</th><th data-en="Reward" data-es="Recompensa">Reward</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Housing & Capital Assets</td><td>$5,400,000</td></tr>
-                    <tr class="total-row"><td>TOTAL REQUEST</td><td>$7,342,000</td></tr>
+                    <tr><td>1 Star</td><td data-en="Branded Keychain or Sticker" data-es="Llavero o Calcomanía">Branded Keychain or Sticker</td></tr>
+                    <tr><td>3 Stars</td><td data-en="Beacon T-Shirt or Tote" data-es="Camiseta o Bolso">Beacon T-Shirt or Tote</td></tr>
+                    <tr><td>10 Stars</td><td data-en="Featured as 'Shining Beacon'" data-es="Destacado como 'Shining Beacon'">Featured as "Shining Beacon"</td></tr>
                 </tbody>
             </table>
+
+            <form style="margin-top: 30px; background: #f9f9f9; padding: 30px; border-radius: 8px;">
+                <h3 style="margin-bottom: 15px;" data-en="Volunteer Sign-Up" data-es="Registro de Voluntarios">Volunteer Sign-Up</h3>
+                <input type="text" placeholder="Full Name" class="input-field">
+                <input type="email" placeholder="Email Address" class="input-field">
+                <select class="input-field">
+                    <option data-en="Select Role" data-es="Seleccionar Rol">Select Role</option>
+                    <option data-en="Social Media" data-es="Redes Sociales">Social Media</option>
+                    <option data-en="Event Support" data-es="Soporte de Eventos">Event Support</option>
+                </select>
+                <button type="submit" class="donate-btn" style="background: var(--rose);" data-en="Join the Mission" data-es="Únete a la Misión">Join the Mission</button>
+            </form>
         </div>
     </section>
 
-    <footer style="padding: 40px 10%; background: #1A1A1A; color: white; text-align: center;">
-        <p style="font-weight: 900; letter-spacing: 2px; font-size: 0.9rem;">BEACON OF LIGHT</p>
-        <p style="color: #888; font-size: 0.75rem; margin-top: 10px;">contact@beaconoflight.org</p>
+    <footer style="background: var(--navy); color: white; padding: 60px 10%; text-align: center;">
+        <h2 style="color: var(--gold); margin-bottom: 20px;">BEACON OF LIGHT & RESILIENCE</h2>
+        <p data-en="Boston-based 501(c)(3) Nonprofit Advocacy" data-es="Defensa sin fines de lucro 501(c)(3) con sede en Boston">Boston-based 501(c)(3) Nonprofit Advocacy</p>
+        <p style="margin-top: 10px; opacity: 0.7;">contact@beaconoflight.org</p>
+        <div style="margin-top: 20px; font-size: 1.5rem; display: flex; justify-content: center; gap: 20px;">
+            <i class="fab fa-instagram"></i><i class="fab fa-facebook"></i><i class="fab fa-linkedin"></i>
+        </div>
     </footer>
 
     <script>
+        function showDonation(type) {
+            const monthly = document.getElementById('monthly-tiers');
+            const onetime = document.getElementById('onetime-tiers');
+            const btnM = document.getElementById('btn-monthly');
+            const btnO = document.getElementById('btn-onetime');
+
+            if(type === 'monthly') {
+                monthly.classList.remove('hidden');
+                onetime.classList.add('hidden');
+                btnM.classList.add('active');
+                btnO.classList.remove('active');
+            } else {
+                onetime.classList.remove('hidden');
+                monthly.classList.add('hidden');
+                btnO.classList.add('active');
+                btnM.classList.remove('active');
+            }
+        }
+
         let currentLang = 'en';
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
             document.querySelector('.lang-switch').innerText = currentLang === 'en' ? 'ES' : 'EN';
             document.querySelectorAll('[data-en]').forEach(el => {
                 const text = el.getAttribute(`data-${currentLang}`);
-                if(el.innerHTML.includes('<br')) { el.innerHTML = text; } 
+                if(el.tagName === 'INPUT') { el.placeholder = text; }
                 else { el.innerText = text; }
             });
         }
