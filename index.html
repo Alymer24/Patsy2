@@ -36,7 +36,6 @@
         .nav-links a { text-decoration: none; color: rgba(255,255,255,0.8); font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .lang-switch { border: 1px solid var(--gold); background: none; color: var(--gold); padding: 5px 12px; font-weight: 700; cursor: pointer; border-radius: 2px; font-size: 0.6rem; }
 
-        /* Hamburger Menu Icon */
         .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
         /* Hero */
@@ -82,6 +81,7 @@
         .pillar-card { 
             background: var(--navy); padding: 30px 20px; text-align: center; border-radius: 10px; transition: 0.4s; 
             min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--white);
+            cursor: pointer;
         }
         .pillar-card:hover { transform: translateY(-10px); border: 1px solid var(--gold); box-shadow: 0 15px 30px rgba(198, 167, 94, 0.2); }
         .pillar-card i { font-size: 2.2rem; color: var(--gold); margin-bottom: 15px; }
@@ -112,10 +112,24 @@
         .form-label { display: block; font-weight: 700; font-size: 0.7rem; color: var(--navy); text-transform: uppercase; margin-bottom: 8px; }
         .form-control { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; font-family: inherit; }
 
-        /* Modal */
+        /* Modals */
         .modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
         .modal-content { background: white; margin: 5% auto; padding: 50px; width: 85%; max-width: 900px; border-radius: 12px; position: relative; max-height: 80vh; overflow-y: auto; }
         .close-modal { position: absolute; right: 25px; top: 15px; cursor: pointer; font-size: 2.5rem; color: var(--navy); }
+
+        /* Dedicated Pillar Modal Overlay */
+        #pillar-modal {
+            display: none; position: fixed; z-index: 5000; left: 0; top: 0; 
+            width: 100%; height: 100%; background: rgba(31, 42, 68, 0.9); backdrop-filter: blur(8px);
+        }
+        .pillar-modal-content {
+            background: var(--cream); margin: 10% auto; padding: 40px; width: 90%; max-width: 600px; 
+            border-radius: 15px; position: relative; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-top: 5px solid var(--gold);
+        }
+        .pillar-modal-content h2 { color: var(--navy); margin-bottom: 20px; text-transform: uppercase; font-weight: 900; }
+        .pillar-modal-content p { line-height: 1.8; color: var(--text); font-size: 1rem; }
+        .close-pillar { position: absolute; top: 15px; right: 20px; font-size: 2.5rem; cursor: pointer; color: var(--rose); }
 
         footer { background: var(--navy); color: white; padding: 60px 8%; text-align: center; }
         .legal-footer { font-size: 0.65rem; opacity: 0.7; margin-top: 30px; line-height: 1.8; }
@@ -135,8 +149,6 @@
             .grid-2, .impact-container { grid-template-columns: 1fr; }
             .hero { text-align: center; }
             .tier-card { width: calc(50% - 12px); }
-
-            /* Target specific hero scaling as requested previously */
             .hero-logo { max-width: 280px !important; margin-bottom: 15px !important; }
             .hero-title { font-size: 1.8rem !important; line-height: 1.2 !important; margin-bottom: 25px !important; }
             .hero .btn-action { padding: 15px 30px !important; font-size: 0.7rem !important; width: 90% !important; }
@@ -148,7 +160,6 @@
 </head>
 <body>
 
-   
     <nav>
         <a href="#" class="logo-container">
             <img src="Logo.png" alt="Beacon of Light Logo" class="logo-img">
@@ -246,7 +257,8 @@
         <div class="grid-2">
             <div class="info-text">
                 <h3 data-en="Connect & Earn" data-es="Conecta y Gana">Connect, Learn & Earn</h3>
-                <p data-en="Join our events to connect with support. Attendees earn <strong>Beacon Stars</strong> redeemable for rewards." data-es="Únete para conectarte con apoyo. Los asistentes ganan <strong>Estrellas Beacon</strong>.">Join our resource events to connect with housing support. Attendees earn Beacon Stars.</p>
+                <p data-en="Join our recourse events to connect with programs serving our community and organizations. Attendees earn <strong> Beacon Stars </strong> . 
+" data-es="Únete para conectarte con apoyo. Los asistentes ganan <strong>Estrellas Beacon</strong>.">Join our resource events to connect with housing support. Attendees earn Beacon Stars.</p>
                 <table class="stars-table">
                     <tr><th data-en="Stars" data-es="Estrellas">Stars</th><th data-en="Reward" data-es="Premio">Reward</th></tr>
                     <tr><td class="star-val">1 Star</td><td data-en="Keychain" data-es="Llavero">Keychain</td></tr>
@@ -267,18 +279,26 @@
     <section class="section" id="pillars">
         <div class="section-header"><h2 data-en="The 10 Pillars of Empowerment" data-es="Los 10 Pilares de Empoderamiento">The 10 Pillars of Empowerment</h2><div class="line"></div></div>
         <div class="pillars-grid">
-            <div class="pillar-card"><i class="fas fa-hotel"></i><h4 data-en="Safe Stays" data-es="Estadías">Safe Stays</h4></div>
-            <div class="pillar-card"><i class="fas fa-gavel"></i><h4 data-en="Court Support" data-es="Apoyo Legal">Court Support</h4></div>
-            <div class="pillar-card"><i class="fas fa-users"></i><h4 data-en="Teen Prevention" data-es="Prevención">Teen Prevention</h4></div>
-            <div class="pillar-card"><i class="fas fa-heart"></i><h4 data-en="Wellness" data-es="Bienestar">Wellness</h4></div>
-            <div class="pillar-card"><i class="fas fa-piggy-bank"></i><h4 data-en="Financial" data-es="Finanzas">Financial</h4></div>
-            <div class="pillar-card"><i class="fas fa-briefcase"></i><h4 data-en="Career" data-es="Carrera">Career</h4></div>
-            <div class="pillar-card"><i class="fas fa-utensils"></i><h4 data-en="Food" data-es="Comida">Food</h4></div>
-            <div class="pillar-card"><i class="fas fa-car"></i><h4 data-en="Transport" data-es="Transporte">Transport</h4></div>
-            <div class="pillar-card"><i class="fas fa-language"></i><h4 data-en="Bilingual" data-es="Bilingüe">Bilingual</h4></div>
-            <div class="pillar-card"><i class="fas fa-star"></i><h4 data-en="Alumni" data-es="Alumni">Alumni</h4></div>
+            <div class="pillar-card" onclick="openPillar(1)"><i class="fas fa-hotel"></i><h4 data-en="Safe Stays">Safe Stays</h4></div>
+            <div class="pillar-card" onclick="openPillar(2)"><i class="fas fa-heart"></i><h4 data-en="Wellness">Wellness</h4></div>
+            <div class="pillar-card" onclick="openPillar(3)"><i class="fas fa-users"></i><h4 data-en="Teen Prevention">Teen Prevention</h4></div>
+            <div class="pillar-card" onclick="openPillar(4)"><i class="fas fa-graduation-cap"></i><h4 data-en="Education">Education</h4></div>
+            <div class="pillar-card" onclick="openPillar(5)"><i class="fas fa-piggy-bank"></i><h4 data-en="Financial">Financial</h4></div>
+            <div class="pillar-card" onclick="openPillar(6)"><i class="fas fa-home"></i><h4 data-en="Housing">Housing</h4></div>
+            <div class="pillar-card" onclick="openPillar(7)"><i class="fas fa-briefcase"></i><h4 data-en="Employment">Employment</h4></div>
+            <div class="pillar-card" onclick="openPillar(8)"><i class="fas fa-gavel"></i><h4 data-en="Court Support">Court Support</h4></div>
+            <div class="pillar-card" onclick="openPillar(9)"><i class="fas fa-hand-holding-heart"></i><h4 data-en="Community">Community</h4></div>
+            <div class="pillar-card" onclick="openPillar(10)"><i class="fas fa-star"></i><h4 data-en="Personal Growth">Personal Growth</h4></div>
         </div>
     </section>
+
+    <div id="pillar-modal" class="modal">
+        <div class="pillar-modal-content">
+            <span class="close-pillar" onclick="closePillar()">&times;</span>
+            <h2 id="modal-pillar-title"></h2>
+            <p id="modal-pillar-text"></p>
+        </div>
+    </div>
 
     <section class="section" id="donate" style="background: #fdfbf8;">
         <div class="section-header"><h2 data-en="Support Our Impact" data-es="Apoya Nuestro Impacto">Partner in Our Impact</h2><div class="line"></div></div>
@@ -385,11 +405,27 @@
     </div>
 
     <script>
+        // Data for Pillar Modal
+        const pillarDetails = {
+            1: { title: "Safe Stays", text: "Providing immediate safety for individuals and families in crisis. Through our Safe Stays pilot, we connect survivors with temporary hotel accommodations and crisis resources." },
+            2: { title: "Wellness", text: "Healing from trauma requires compassion. This pillar promotes emotional well-being by connecting individuals with trauma-informed care and counseling." },
+            3: { title: "Teen Prevention", text: "Empowering the next generation with knowledge about healthy relationships, boundaries, and recognizing warning signs of abuse." },
+            4: { title: "Education", text: "Promoting learning opportunities, mentorship, and skill development that help individuals grow personally and professionally." },
+            5: { title: "Financial", text: "Guidance on budgeting and resource connections to help individuals develop the skills needed for long-term economic security." },
+            6: { title: "Housing", text: "Focusing on connecting families with housing resources and partnerships that support safe, stable, and permanent living situations." },
+            7: { title: "Employment", text: "True empowerment includes professional stability. We promote access to career resources and supportive programs for workforce entry." },
+            8: { title: "Court Support", text: "Connecting individuals with legal information and advocacy resources to help them navigate legal systems with confidence." },
+            9: { title: "Community", text: "Building partnerships and outreach networks to ensure individuals feel connected and supported within their local community." },
+            10: { title: "Personal Growth", text: "Focusing on building confidence and leadership skills that help individuals move forward with hope and resilience." }
+        };
+
+        // Navigation Menu
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
 
+        // Language Switcher
         function toggleLanguage() {
             const btn = document.querySelector('.lang-switch');
             const isEn = btn.innerText === 'ES';
@@ -400,20 +436,44 @@
                 el.innerHTML = isEn ? es : en;
             });
         }
+
+        // Accordion functionality
         function toggleAccordion(header) {
             const item = header.parentElement;
             item.classList.toggle('active');
             const content = header.nextElementSibling;
             content.style.display = item.classList.contains('active') ? 'block' : 'none';
         }
+
+        // Donation Tiers
         function showTiers(type) {
             document.getElementById('monthly-grid').classList.toggle('hidden', type !== 'monthly');
             document.getElementById('once-grid').classList.toggle('hidden', type !== 'once');
             document.getElementById('btn-m').classList.toggle('active', type === 'monthly');
             document.getElementById('btn-o').classList.toggle('active', type === 'once');
         }
+
+        // Transparency Modal
         function openModal() { document.getElementById('transModal').style.display = "block"; }
         function closeModal() { document.getElementById('transModal').style.display = "none"; }
+
+        // Pillar Modal
+        function openPillar(id) {
+            document.getElementById('modal-pillar-title').innerText = pillarDetails[id].title;
+            document.getElementById('modal-pillar-text').innerText = pillarDetails[id].text;
+            document.getElementById('pillar-modal').style.display = 'block';
+        }
+        function closePillar() {
+            document.getElementById('pillar-modal').style.display = 'none';
+        }
+
+        // Global Modal Closer
+        window.onclick = function(event) {
+            const pillarMod = document.getElementById('pillar-modal');
+            const transMod = document.getElementById('transModal');
+            if (event.target == pillarMod) pillarMod.style.display = "none";
+            if (event.target == transMod) transMod.style.display = "none";
+        }
     </script>
 </body>
 </html>
